@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đơn Giản</title>
+    
+    <!-- Tải Tailwind CSS để tạo kiểu -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- CSS nội bộ để sử dụng font Inter -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Tải font Inter từ Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- 
+      Đây là phần HTML (Cấu trúc)
+      Chúng tôi sử dụng các lớp Tailwind để căn giữa mọi thứ
+    -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+        
+        <!-- Thẻ nội dung chính -->
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+            
+            <h1 class="text-3xl font-bold text-blue-600 mb-4">
+                Chào bạn!
+            </h1>
+            
+            <p id="message" class="text-gray-700 text-lg mb-6">
+                Đây là một trang web HTML đơn giản.
+            </p>
+            
+            <button id="changeButton" class="bg-blue-600 text-white font-medium py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">
+                Nhấn vào tôi!
+            </button>
+
+        </div>
+    </div>
+
+    <!-- 
+      Đây là phần JavaScript (Hành vi)
+      Nó nằm bên trong thẻ <script> ở cuối <body>
+    -->
+    <script>
+        // 1. Lấy tham chiếu đến các phần tử HTML
+        const button = document.getElementById('changeButton');
+        const message = document.getElementById('message');
+
+        // 2. Tạo một mảng chứa các thông điệp
+        const messages = [
+            "Bạn đã thay đổi văn bản!",
+            "JavaScript đang hoạt động!",
+            "Thử nhấn lại lần nữa xem.",
+            "Tuyệt vời!",
+            "Chào mừng đến với lập trình web!"
+        ];
+
+        let currentMessageIndex = 0;
+
+        // 3. Thêm một trình nghe sự kiện 'click' (nhấp chuột) vào nút
+        button.addEventListener('click', function() {
+            // Cập nhật chỉ số thông điệp, quay vòng lại từ đầu nếu cần
+            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+            
+            // Cập nhật nội dung văn bản của đoạn <p>
+            message.textContent = messages[currentMessageIndex];
+        });
+    </script>
+
+</body>
+</html>
